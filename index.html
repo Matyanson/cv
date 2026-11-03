@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matyáš Peremský — Software Developer</title>
+    <style>
+        :root {
+        --text: #202124;
+        --muted: #667085;
+        --line: #d9dee7;
+        --accent: #315c8c;
+        --light: #eef4fa;
+        --paper: #fff;
+        --bg: #eef1f5;
+    }
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        line-height: 1.45;
+        font-size: 13px;
+    }
+    a {
+        color: var(--accent);
+        text-decoration: underline;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 24px auto;
+        padding: 15mm 16mm;
+        background: var(--paper);
+        box-shadow: 0 3px 20px rgba(0, 0, 0, 0.08);
+    }
+    header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--text);
+    }
+    h1 {
+        margin: 0;
+        font-size: 32px;
+        letter-spacing: -0.8px;
+        line-height: 1.05;
+    }
+    .title {
+        margin-top: 6px;
+        color: var(--accent);
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .contact {
+        text-align: right;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.65;
+    }
+    .profile {
+        margin: 14px 0 20px;
+        font-size: 13px;
+    }
+    .layout {
+        display: grid;
+        grid-template-columns: 1fr 235px;
+        gap: 27px;
+    }
+    section {
+        margin-bottom: 20px;
+    }
+    h2 {
+        margin: 0 0 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--line);
+        color: var(--accent);
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+    }
+    .timeline {
+        position: relative;
+        margin-left: 5px;
+    }
+    .timeline:before {
+        content: "";
+        position: absolute;
+        left: 67px;
+        top: 5px;
+        bottom: 5px;
+        width: 1px;
+        background: var(--line);
+    }
+    .entry {
+        position: relative;
+        display: grid;
+        grid-template-columns: 57px 1fr;
+        gap: 21px;
+        margin-bottom: 15px;
+    }
+    .entry:before {
+        content: "";
+        position: absolute;
+        left: 63px;
+        top: 5px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 2px solid white;
+        box-shadow: 0 0 0 1px var(--accent);
+    }
+    .date {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 600;
+        text-align: right;
+    }
+    .content {
+        padding-left: 2px;
+    }
+    .content h3 {
+        margin: 0;
+        font-size: 13.5px;
+    }
+    .role {
+        color: var(--muted);
+        font-size: 11px;
+    }
+    .content p {
+        margin: 5px 0;
+    }
+    ul {
+        margin: 4px 0 0 16px;
+        padding: 0;
+    }
+    li {
+        margin: 1px 0;
+    }
+    .project {
+        padding: 10px 11px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        margin-bottom: 9px;
+        break-inside: avoid;
+    }
+    .project h3 {
+        margin: 0;
+        font-size: 13.5px;
+    }
+    .tech {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 1px;
+    }
+    .project p {
+        margin: 5px 0;
+    }
+    .project ul {
+        margin-top: 3px;
+    }
+    .skill {
+        margin-bottom: 10px;
+    }
+    .skill strong {
+        display: block;
+        font-size: 11px;
+        margin-bottom: 3px;
+    }
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .tag {
+        background: var(--light);
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 11px;
+    }
+    .side-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .side-list li {
+        margin: 4px 0;
+    }
+    .education-item {
+        margin-bottom: 10px;
+    }
+    .education-item h3 {
+        font-size: 13px;
+        margin: 0;
+    }
+    .small {
+        color: var(--muted);
+        font-size: 11px;
+    }
+    .side-section p {
+        margin: 5px 0;
+    }
+    @media (max-width: 700px) {
+        .page {
+            width: auto;
+            min-height: auto;
+            margin: 0;
+            padding: 25px;
+            box-shadow: none;
+        }
+        .layout {
+            grid-template-columns: 1fr;
+        }
+        header {
+            grid-template-columns: 1fr;
+        }
+        .contact {
+            text-align: left;
+        }
+    }
+    @media print {
+        @page {
+            /* Forces a custom massive length instead of A4/Letter */
+            /*size: 210mm 297mm;*/
+            /* size: 210mm 480mm; */
+            size: A4;
+            margin: 0;
+        }
+        body {
+            background: white;
+            font-size: 13px;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0;
+            padding: 10mm 13mm;
+            box-shadow: none;
+        }
+        a {
+            color: inherit;
+        }
+        .project {
+            break-inside: avoid;
+        }
+    }
+    .bottom-items {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px 20px;
+    }
+    .bottom-items .project {
+        margin-bottom: 0;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div>
+            <h1>Matyáš Peremský</h1>
+            <div class="title">Software Developer</div>
+            </div>
+            <div class="contact">
+            Hradec Králové, Czech Republic<br>
+            +420 605 551 818 · <a href="mailto:matyas.perem@seznam.cz">matyas.perem@seznam.cz</a><br>
+            <a href="https://www.linkedin.com/in/matyas-peremsky/">LinkedIn</a> ·
+            <a href="https://github.com/Matyanson">GitHub</a><br>
+            Born 2001 · Driving licence B
+            </div>
+        </header>
+
+        <p class="profile">
+        I am a software developer and Applied Informatics student with strong web development experience, particularly
+        TypeScript/JavaScript and SvelteKit. I am also experienced with Java, Spring Boot,
+        Python, databases and software architecture. I enjoy building complete applications independently and
+        working on technically challenging projects involving algorithms, GPU programming and embedded systems.
+        </p>
+
+        <div class="layout">
+            <main>
+
+            <section>
+            <h2>Experience</h2>
+            <div class="timeline">
+
+            <div class="entry">
+            <div class="date">2025-<br>2026</div>
+            <div class="content">
+            <h3>Freelance Software / Web Developer — OSVČ</h3>
+            <div class="role">Tools for kindergartens</div>
+            <ul>
+            <li>Developed interactive Excel forms with connected dropdown menus and filtering.</li>
+            <li>Worked directly with approximately 4-5 kindergartens.</li>
+            <li>Helped directors use LLM tools and used LLMs to assist with report generation.</li>
+            </ul>
+            </div>
+            </div>
+
+            <div class="entry">
+            <div class="date">2022</div>
+            <div class="content">
+            <h3>Freelance Web Developer — OSVČ</h3>
+            <div class="role">Custom website for a private client</div>
+            <ul>
+            <li>Independently handled client communication, Figma design, WordPress implementation and deployment.</li>
+            <li>Customized a template, used Elementor and custom CSS, and configured SEO/GDPR/cookie plugins.</li>
+            <li>Set up domain and hosting at WEDOS.</li>
+            <li><a href="https://avonsvetkrasy.cz/">avonsvetkrasy.cz</a></li>
+            </ul>
+            </div>
+            </div>
+
+            <div class="entry">
+            <div class="date">2019</div>
+            <div class="content">
+            <h3>BMAS Agency Ltd. — Internship</h3>
+            <div class="role">React.js · Gatsby.js</div>
+            <p>Implemented a multipage web form with custom CSS styles and reusable components.</p>
+            </div>
+            </div>
+
+            <div class="entry">
+            <div class="date">2019</div>
+            <div class="content">
+            <h3>S.I.C. Ltd. — Internship</h3>
+            <div class="role">Linux · SSH · Virtual Machines</div>
+            <p>Worked with Linux servers, SSH/PuTTY, FTP, server VMs and SQL installation.</p>
+            </div>
+            </div>
+
+            <div class="entry">
+            <div class="date">2018</div>
+            <div class="content">
+            <h3>Softgate Ltd. — Internship</h3>
+            <div class="role">PowerShell</div>
+            <p>Added functionality to an internal Windows configuration tool, including registry changes and software installation/uninstallation.</p>
+            </div>
+            </div>
+
+            </div>
+            </section>
+
+            <section>
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>University of Hradec Králové — Master's Degree, Applied Informatics</h3>
+                <div class="small">2024-present · Expected graduation 2027</div>
+            </div>
+            <div class="education-item">
+            <h3>University of Hradec Králové — Bachelor's Degree, Applied Informatics</h3>
+            <div class="small">2021-2024 · Thesis grade A</div>
+            <p><strong>Thesis:</strong> <em>Webová aplikace pro hledání cest na herní mapě</em> — developed a custom graph-search algorithm for finding routes through Trackmania maps and compared it with brute force, achieving a very large performance improvement.</p>
+            <div class="small">SvelteKit · Web Workers · Vercel · <a href="https://tm-cutfinder.vercel.app/">Live demo</a></div>
+            </div>
+            <div class="education-item">
+            <h3>DELTA — High School of Informatics and Economics</h3>
+            <div class="small">2017-2021</div>
+            </div>
+            </section>
+
+            <section>
+            <h2>Selected Projects</h2>
+
+            <div class="project">
+            <h3>Parallax.css</h3>
+            <div class="tech">CSS · npm</div>
+            <p>Published npm library for CSS-only scrolling parallax effects, using mathematical transformations to position and scale elements according to virtual distance.</p>
+            <ul>
+            <li>Independent implementation with dedicated interactive documentation.</li>
+            <li>~1,000 npm downloads and continuing weekly downloads.</li>
+            </ul>
+            <a href="https://matyanson.github.io/parallax.css/">Documentation</a>
+            </div>
+
+            <div class="project">
+            <h3>Daki.moe</h3>
+            <div class="tech">SvelteKit · TypeScript · SSR · Web Scraping · Custom Parser</div>
+            <p>Dakimakura search engine with a custom full-text query language. Designed and implemented the grammar, parser and scraper independently; results are scraped from external sites on demand.</p>
+            <a href="https://www.daki.moe/">www.daki.moe</a>
+            </div>
+
+            </section>
+
+            </main>
+
+            <aside>
+
+            <section>
+            <h2>Skills</h2>
+
+            <div class="skill">
+            <strong>Programming</strong>
+            <div class="tags">
+            <span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Python</span>
+            <span class="tag">Java</span><span class="tag">C#</span><span class="tag">C++</span><span class="tag">GLSL</span>
+            </div>
+            </div>
+
+            <div class="skill">
+            <strong>Web</strong>
+            <div class="tags">
+            <span class="tag">SvelteKit</span><span class="tag">React</span><span class="tag">Next.js</span>
+            <span class="tag">Vue.js</span><span class="tag">Spring Boot</span><span class="tag">Spring MVC</span>
+            <span class="tag">Spring Security</span><span class="tag">WebGL</span>
+            </div>
+            </div>
+
+            <div class="skill">
+            <strong>Databases / Backend</strong>
+            <div class="tags">
+            <span class="tag">PostgreSQL</span><span class="tag">SQL</span><span class="tag">MongoDB</span>
+            <span class="tag">Redis</span><span class="tag">Firebase</span><span class="tag">Firestore</span>
+            <span class="tag">Hibernate</span><span class="tag">JPA</span><span class="tag">Prisma</span>
+            <span class="tag">REST</span><span class="tag">WebSockets</span>
+            </div>
+            </div>
+
+            <div class="skill">
+            <strong>Tools / Platforms</strong>
+            <div class="tags">
+            <span class="tag">Git</span><span class="tag">Docker</span><span class="tag">Vercel</span>
+            <span class="tag">Linux</span><span class="tag">PowerShell</span><span class="tag">ESP32</span><span class="tag">RTOS</span>
+            </div>
+            </div>
+            </section>
+
+            <section>
+            <h2>Study Abroad</h2>
+            <div class="education-item">
+            <h3>National Dong Hwa University — Taiwan</h3>
+            <div class="small">Spring 2026</div>
+            <p>LLMs & AI agents · ESP32 / IoT · Image processing / PyTorch · Fundamental Chinese</p>
+            </div>
+            <div class="education-item">
+            <h3>Kochi University of Technology — Japan</h3>
+            <div class="small">Spring 2023</div>
+            <p>Web standards · Japanese · Presentation and communication</p>
+            </div>
+            </section>
+
+            <section>
+            <h2>Java Project</h2>
+            <p>
+            <strong>Anime Tracking Application</strong><br>
+            <span class="small">Java · Spring Boot · Thymeleaf · Spring Security · PostgreSQL · Hibernate · JPA</span>
+            </p>
+            <p>University web application similar to MyAnimeList with authentication, custom watchlists and ratings.</p>
+            </section>
+
+            <section>
+            <h2>Languages</h2>
+            <ul class="side-list">
+            <li><strong>Czech</strong> — native</li>
+            <li><strong>English</strong> — C1</li>
+            <li><strong>Japanese</strong> — fundamental</li>
+            <li><strong>Chinese</strong> — fundamental</li>
+            </ul>
+            </section>
+
+            <section>
+            <h2>Certificates</h2>
+            <ul class="side-list">
+            <li>CCNA Routing & Switching: Introduction to Networks — 2021</li>
+            <li>Cisco Cybersecurity Essentials — 2025</li>
+            <li>Oracle Database Design & Programming with SQL — 2019</li>
+            <li>Oracle Database Foundations — 2018</li>
+            <li>ECDL Profile Certificate — 2021</li>
+            </ul>
+            </section>
+
+            <section>
+            <h2>Interests</h2>
+            <p>
+            Hiking · Cycling · Skiing · Calisthenics · FPV drones · Video editing ·
+            Magic: The Gathering · Trackmania · Arduino / Raspberry Pi
+            </p>
+            </section>
+            </aside>
+        </div>
+        
+        <div class="bottom-items">
+            <div class="project">
+            <h3>Trading Bot</h3>
+            <div class="tech">Python · Svelte.js · WebSockets · Alpaca API · Event-driven Architecture</div>
+            <p>Working trading application for designing and running automated strategies. Built an extensible architecture around strategy, order, budget and API managers with quote/trade event handling and an Alpaca integration.</p>
+            <a href="https://github.com/Matyanson/trade-offer">GitHub repository</a>
+            </div>
+
+            <div class="project">
+            <h3>Fible</h3>
+            <div class="tech">Svelte.js · WebGL · Compute Shaders · Image Processing</div>
+            <p>Active project for generating 3D-printable images using a limited filament palette. Developed a custom GPU-accelerated color-processing algorithm and validated it with a physical 3D-printed prototype that reproduced the source image.</p>
+            </div>
+
+            <div class="project">
+            <h3>Minecraft Shader / Boxeh Shader</h3>
+            <div class="tech">OpenGL · GLSL</div>
+            <p>Complete publicly downloadable Minecraft shader pack developed independently for more than a year, focusing on performance and physically grounded effects such as reflections, refraction, light absorption, god rays and atmospheric fog.</p>
+            <a href="https://github.com/Matyanson/boxeh-shader">GitHub repository</a>
+            </div>
+
+            <div class="project">
+            <h3>Smart Chess Board</h3>
+            <div class="tech">ESP32 · C++ · RTOS · Hall-effect Sensors</div>
+            <p>Ongoing embedded project. Currently developing ESP32 firmware and Hall-effect sensor matrix for detecting chess pieces; the planned system will automatically move pieces and connect to Lichess.</p>
+            <a href="https://github.com/Matyanson/chess-move-detection-prototype">GitHub repository</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
